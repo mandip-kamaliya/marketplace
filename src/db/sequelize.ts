@@ -5,6 +5,11 @@ import { Seller } from '../models/seller/Seller';
 import { Salesman } from '../models/salesman/Salesman';
 import { DeliveryPerson } from '../models/delivery/DeliveryPerson';
 import { Customer } from '../models/customer/Customer';
+import { Product } from '../models/Product';
+import { Order } from '../models/Order';
+import { OrderItem } from '../models/OrderItem';
+import { Store } from '../models/Store';
+import { StoreVisit } from '../models/StoreVisit';
 
 let sequelize: Sequelize | null = null;
 
@@ -23,7 +28,18 @@ export async function initSequelize() {
     password: config.db.password,
     host: config.db.host,
     port: config.db.port,
-    models: [User, Seller, Salesman, DeliveryPerson, Customer],
+    models: [
+      User,
+      Seller,
+      Salesman,
+      DeliveryPerson,
+      Customer,
+      Product,
+      Order,
+      OrderItem,
+      Store,
+      StoreVisit
+    ],
     logging: false
   });
 

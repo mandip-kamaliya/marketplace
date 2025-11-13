@@ -2,6 +2,29 @@ import { Response } from 'express';
 import { User } from '../models/User';
 import { AuthRequest } from '../middleware/auth';
 
+/**
+ * @swagger
+ * /api/users/me:
+ *   get:
+ *     summary: Get current authenticated user's profile
+ *     description: Returns the profile of the currently authenticated user
+ *     tags: [Users]
+ *     security:
+ *       - bearerAuth: []
+ *     responses:
+ *       200:
+ *         description: The user profile
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/User'
+ *       401:
+ *         description: Unauthorized - No valid token provided
+ *       404:
+ *         description: User not found
+ *       500:
+ *         description: Server error
+ */
 export const getCurrentUser = async (req: AuthRequest, res: Response) => {
   try {
     if (!req.user) {
